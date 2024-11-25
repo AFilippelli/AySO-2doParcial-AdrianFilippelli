@@ -1,0 +1,39 @@
+Punto C:
+
+mkdir ~/docker2Parcial
+cd ~/docker2Parcial
+mkdir appHomeBanking
+nano appHomeBanking/index.html
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Index Page</title>
+</head>
+<body>
+    <h1>Bienvenido a Index Page</h1>
+</body>
+</html>
+
+nano appHomeBanking/contacto.html
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Contacto Page</title>
+</head>
+<body>
+    <h1>Bienvenido a Contacto Page</h1>
+</body>
+</html>
+
+nano Dockerfile
+FROM nginx
+COPY appHomeBanking /usr/share/nginx/html
+docker login -u adrianf134
+sudo docker build -t adrianf134/2parcial-ayso:v1.0 .
+sudo docker image list
+docker push adrianf134/2parcial-ayso:v1.0
+docker run -d -p 8080:80 adrianf134/2parcial-ayso:v1.0
+docker container ls
+
